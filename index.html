@@ -7,14 +7,43 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
     <header> 
         <h1>Curso de Arduino</h1> 
         <h2>Controle de Iluminacao</h2>
     </header> 
     <main> 
-        <button id="acender">Acender Lampada</button>  
-        <button id="desligar">Desligar lampada</button>
+        <button id="acender" onclick="ledon()"> Acender Lampada</button>  
+        <button id="desligar " onclick="ledoff()">  Desligar lampada</button>
     </main>
-</body>
+</body>  
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js">
+            </script>
+            <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+ 
+
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBArHbzr5rNYfobm5uwBX5Xkc79z6z1f_4",
+            authDomain: "projectoarduino-7cf4d.firebaseapp.com",
+            databaseURL: "https://projectoarduino-7cf4d-default-rtdb.firebaseio.com",
+            projectId: "projectoarduino-7cf4d",
+            storageBucket: "projectoarduino-7cf4d.appspot.com",
+            messagingSenderId: "505931472419",
+            appId: "1:505931472419:web:e67e003af4c0a1533fdb96",
+            measurementId: "G-41L4E0QJ3L"
+          }
+          firebase.initializeApp(firebaseConfig)
+
+          function ledon(){
+            firebase.database().ref('sala').set({estado:'LIGADA'})
+        }
+        function ledoff(){
+            firebase.database().ref('sala').set({estado:'DESLIGADA'})
+        }
+        
+    </script>
+
 </html>
